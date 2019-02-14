@@ -1,6 +1,6 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "Getting Started"
+author: "Matthew Strasiotto"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -16,50 +16,115 @@ knitr::opts_chunk$set(
 )
 ```
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+This document aims to provide an overview of the basic usage of the Path object.
+Before we start, we load the package.
 
-## Vignette Info
-
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
-
-## Styles
-
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
-
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
-
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+```{r}
+library(pathlibr)
+library(here)
+library(glue)
 ```
 
-You can enable figure captions by `fig_caption: yes` in YAML:
+# Motivation
 
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
+The Path class aims to make navigating directories a little more convenient, 
+it provides convenient interfaces for common operations such as navigating up
+(To the parent directory), listing child directories, and joining paths.
 
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
+# Getting Started
 
-## More Examples
+## Making a Path
 
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
+First lets initialize a new path object.
 
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
+```{r}
+root <- Path$new(system.file("", package = "pathlibr", mustWork = TRUE))
 ```
 
-Also a quote using `>`:
+And lets view the new path
 
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+```{r}
+root$show
+```
+So far so good, we were able to initialize a Path object at our package install
+root.
+
+Now how do we use it?
+
+## Navigating with your path
+
+Lets go down a level, and examine our example vignette data.
+
+
+Here, we use the `dir` binding, followed by `.`
+
+Think of `.` as in, how file-systems represent
+the current directory. 
+
+This is actually just a shortcut for `dir` or `ls`. 
+
+```{r}
+eg <- root$dir$example
+print(glue("using dir: {eg$show}"))
+
+eg <- root$.$example
+
+print(glue("using '.': {eg$show}"))
+```
+
+It's important to note that `path$.` is actually returning a named list
+of files in the directory, and that though these files might look like 
+strings when printed, they're actually new `Path` objects.
+
+Because of this, we're able to chain subsequent `$.` commands.
+
+Let's see that in action.
+
+```{r}
+file <- eg$.$path$.$to$.$file1.txt
+
+file
+```
+
+Great, so how do we navigate to `file1.txt`'s sibling, `file2.txt`?
+
+We could use the `path$parent` binding to return the `Path` object 
+corresponding to the directory `example/path/to/`, 
+
+as you may have guessed, we can use a shortcut alias, `path$..` to navigate up.
+
+```{r}
+file$parent
+
+file$..
+```
+
+Now that we're able to move upwards, we can access the sibling
+
+```{r}
+file2 <- file$..$.$file2.txt
+
+file2$show
+```
+
+I wonder what's inside these files? To find out, we should read them.
+
+It's important to notes that we should use this `$show` binding to return
+the path as a string when giving it to IO functions. 
+
+Inconvenient, I know (I'm going to work on that)
+
+```{r}
+directory <- file$..
+
+for (f in c("file1.txt", "file2.txt")){
+  print(glue("{f}:\n"))
+  
+  directory$.[[f]]$show %>% readLines() %>% cat()
+  
+  print(glue("\n"))
+}
+
+```
+
