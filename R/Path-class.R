@@ -159,7 +159,7 @@ Path$set(
   function(x){
     if (!missing(x)) stop("Don't assign to me!")
     out <- private$path %>%
-      pathr::parse_path() %>% pathr::back()
+      basename()
     return(out)
   },
   overwrite = TRUE
@@ -202,7 +202,7 @@ Path$set(
   function(){
     in_dir <- base::dir(private$path)
 
-    paths <- pathr::file_path(self$show, in_dir)
+    paths <- file.path(self$show, in_dir)
     out <- list()
     out[in_dir] <- paths
     return(out)
