@@ -1,2 +1,4 @@
+^docs$
+^_pkgdown\.yml$
 ^pathlibr\.Rproj$
 ^\.Rproj\.user$

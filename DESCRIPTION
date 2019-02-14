@@ -1,12 +1,26 @@
 Package: pathlibr
-Title: What the Package Does (One Line, Title Case)
+Title: OO Path Manipulation in R
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Matthew",
+           family = "Strasiotto",
            role = c("aut", "cre"),
-           email = "first.last@example.com")
-Description: What the package does (one paragraph).
-License: What license it uses
+           email = "matthew.strasiotto@gmail.com")
+Description: An OO Interface for path manipulation, emulating pythons 
+             "pathlib".
+License: MIT
 Encoding: UTF-8
 LazyData: true
+Imports: 
+    R6,
+    magrittr,
+    glue (>= 1.3.0),
+    logging,
+    rlang,
+    purrr
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
+Suggests: 
+    testthat
+Remotes:
+    trinker/pathlib
