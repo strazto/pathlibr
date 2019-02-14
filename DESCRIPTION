@@ -24,6 +24,4 @@ Suggests:
     testthat,
     knitr,
     rmarkdown
-Remotes:
-    trinker/pathlib
 VignetteBuilder: knitr
