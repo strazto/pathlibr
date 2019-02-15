@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pathlibr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -75,8 +75,6 @@
     
 <p>This document aims to provide an overview of the basic usage of the Path object. Before we start, we load the package.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(pathlibr)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(here)
-<span class="co">#&gt; here() starts at /Users/matt/Documents/pathlibr</span>
 <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(glue)</code></pre></div>
 <div id="motivation" class="section level1">
 <h1 class="hasAnchor">
@@ -106,32 +104,32 @@
 <p>This is actually just a shortcut for <code>dir</code> or <code>ls</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eg &lt;-<span class="st"> </span>root<span class="op">$</span>dir<span class="op">$</span>example
 <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/glue/topics/glue">glue</a></span>(<span class="st">"using dir: {eg$show}"</span>))
-<span class="co">#&gt; using dir: /Library/Frameworks/R.framework/Versions/3.5/Resources/library/pathlibr/example</span>
+<span class="co">#&gt; using dir: /Library/Frameworks/R.framework/Versions/3.5/Resources/library/pathlibr//example</span>
 
 eg &lt;-<span class="st"> </span>root<span class="op">$</span>.<span class="op">$</span>example
 
 <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/glue/topics/glue">glue</a></span>(<span class="st">"using '.': {eg$show}"</span>))
-<span class="co">#&gt; using '.': /Library/Frameworks/R.framework/Versions/3.5/Resources/library/pathlibr/example</span></code></pre></div>
+<span class="co">#&gt; using '.': /Library/Frameworks/R.framework/Versions/3.5/Resources/library/pathlibr//example</span></code></pre></div>
 <p>It’s important to note that <code>path$.</code> is actually returning a named list of files in the directory, and that though these files might look like strings when printed, they’re actually new <code>Path</code> objects.</p>
 <p>Because of this, we’re able to chain subsequent <code>$.</code> commands.</p>
 <p>Let’s see that in action.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">file &lt;-<span class="st"> </span>eg<span class="op">$</span>.<span class="op">$</span>path<span class="op">$</span>.<span class="op">$</span>to<span class="op">$</span>.<span class="op">$</span>file1.txt
 
 file
-<span class="co">#&gt; [1] "/Library/Frameworks/R.framework/Versions/3.5/Resources/library/pathlibr/example/path/to/file1.txt"</span></code></pre></div>
+<span class="co">#&gt; [1] "/Library/Frameworks/R.framework/Versions/3.5/Resources/library/pathlibr//example/path/to/file1.txt"</span></code></pre></div>
 <p>Great, so how do we navigate to <code>file1.txt</code>’s sibling, <code>file2.txt</code>?</p>
 <p>We could use the <code>path$parent</code> binding to return the <code>Path</code> object corresponding to the directory <code>example/path/to/</code>,</p>
 <p>as you may have guessed, we can use a shortcut alias, <code>path$..</code> to navigate up.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">file<span class="op">$</span>parent
-<span class="co">#&gt; [1] "/Library/Frameworks/R.framework/Versions/3.5/Resources/library/pathlibr/example/path/to"</span>
+<span class="co">#&gt; [1] "/Library/Frameworks/R.framework/Versions/3.5/Resources/library/pathlibr//example/path/to"</span>
 
 file<span class="op">$</span>..
-<span class="co">#&gt; [1] "/Library/Frameworks/R.framework/Versions/3.5/Resources/library/pathlibr/example/path/to"</span></code></pre></div>
+<span class="co">#&gt; [1] "/Library/Frameworks/R.framework/Versions/3.5/Resources/library/pathlibr//example/path/to"</span></code></pre></div>
 <p>Now that we’re able to move upwards, we can access the sibling</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">file2 &lt;-<span class="st"> </span>file<span class="op">$</span>..<span class="op">$</span>.<span class="op">$</span>file2.txt
 
 file2<span class="op">$</span>show
-<span class="co">#&gt; [1] "/Library/Frameworks/R.framework/Versions/3.5/Resources/library/pathlibr/example/path/to/file2.txt"</span></code></pre></div>
+<span class="co">#&gt; [1] "/Library/Frameworks/R.framework/Versions/3.5/Resources/library/pathlibr//example/path/to/file2.txt"</span></code></pre></div>
 <p>I wonder what’s inside these files? To find out, we should read them.</p>
 <p>It’s important to notes that we should use this <code>$show</code> binding to return the path as a string when giving it to IO functions.</p>
 <p>Inconvenient, I know (I’m going to work on that)</p>

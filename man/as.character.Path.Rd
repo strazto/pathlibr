@@ -4,7 +4,7 @@
 \alias{as.character.Path}
 \title{Implementation of S3 generic for as.character}
 \usage{
-\method{as.character}{Path}(x)
+\method{as.character}{Path}(x, ...)
 }
 \arguments{
 \item{x}{the Path object to be coerced to character}

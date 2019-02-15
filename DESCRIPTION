@@ -1,6 +1,6 @@
 Package: pathlibr
 Title: OO Path Manipulation in R
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     person(given = "Matthew",
            family = "Strasiotto",
@@ -8,7 +8,7 @@ Authors@R:
            email = "matthew.strasiotto@gmail.com")
 Description: An OO Interface for path manipulation, emulating pythons 
              "pathlib".
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
@@ -24,6 +24,4 @@ Suggests:
     testthat,
     knitr,
     rmarkdown
-Remotes:
-    trinker/pathlib
 VignetteBuilder: knitr

@@ -22,7 +22,6 @@ Before we start, we load the package.
 
 ```{r}
 library(pathlibr)
-library(here)
 library(glue)
 ```
 
