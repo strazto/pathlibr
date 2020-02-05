@@ -90,10 +90,11 @@ Path$set(
   overwrite = TRUE
 )
 
-# J =====
-#' @describeIn Path$join
+#' @inherit Path$join
 #' @name Path$J
+#' @family Path
 NULL
+
 # Active :::::::::::::::::::: ============
 
 # dir ======
