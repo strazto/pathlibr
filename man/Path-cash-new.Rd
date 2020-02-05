@@ -16,10 +16,16 @@ Initialize a Path object using a string
 Path$new("path/components/as/string")
 }
 \seealso{
-Other Path: \code{\link{Path$..}}, \code{\link{Path$.}},
-  \code{\link{Path$dir}}, \code{\link{Path$join}},
-  \code{\link{Path$name}}, \code{\link{Path$parent}},
-  \code{\link{Path$show}}, \code{\link{Path}},
-  \code{\link{\%//\%}}
+Other Path: 
+\code{\link{Path$..}},
+\code{\link{Path$.}},
+\code{\link{Path$J}},
+\code{\link{Path$dir}},
+\code{\link{Path$join}},
+\code{\link{Path$name}},
+\code{\link{Path$parent}},
+\code{\link{Path$show}},
+\code{\link{Path}},
+\code{\link{\%//\%}()}
 }
 \concept{Path}

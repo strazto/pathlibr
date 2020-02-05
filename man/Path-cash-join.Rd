@@ -20,10 +20,16 @@ path$join("other/path")
 }
 }
 \seealso{
-Other Path: \code{\link{Path$..}}, \code{\link{Path$.}},
-  \code{\link{Path$dir}}, \code{\link{Path$name}},
-  \code{\link{Path$new}}, \code{\link{Path$parent}},
-  \code{\link{Path$show}}, \code{\link{Path}},
-  \code{\link{\%//\%}}
+Other Path: 
+\code{\link{Path$..}},
+\code{\link{Path$.}},
+\code{\link{Path$J}},
+\code{\link{Path$dir}},
+\code{\link{Path$name}},
+\code{\link{Path$new}},
+\code{\link{Path$parent}},
+\code{\link{Path$show}},
+\code{\link{Path}},
+\code{\link{\%//\%}()}
 }
 \concept{Path}
