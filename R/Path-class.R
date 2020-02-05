@@ -74,6 +74,7 @@ Path$set(
 #' }
 #' @name Path$join
 #' @family Path
+#' @usage path$join("other/path")
 #' @return A new `Path` object resulting from the joined paths
 NULL
 Path$set(
@@ -92,6 +93,7 @@ Path$set(
 
 #' @inherit Path$join
 #' @name Path$J
+#' @usage path$J("other/path")
 #' @family Path
 NULL
 
