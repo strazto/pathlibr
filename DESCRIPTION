@@ -1,6 +1,6 @@
 Package: pathlibr
 Title: OO Path Manipulation in R
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: 
     person(given = "Matthew",
            family = "Strasiotto",
@@ -19,9 +19,10 @@ Imports:
     rlang,
     purrr
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 Suggests: 
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    pkgdown
 VignetteBuilder: knitr

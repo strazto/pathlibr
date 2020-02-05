@@ -7,10 +7,16 @@
 Returns a named list of Path elements in a directory
 }
 \seealso{
-Other Path: \code{\link{Path$..}}, \code{\link{Path$.}},
-  \code{\link{Path$join}}, \code{\link{Path$name}},
-  \code{\link{Path$new}}, \code{\link{Path$parent}},
-  \code{\link{Path$show}}, \code{\link{Path}},
-  \code{\link{\%//\%}}
+Other Path: 
+\code{\link{Path$..}},
+\code{\link{Path$.}},
+\code{\link{Path$J}},
+\code{\link{Path$join}},
+\code{\link{Path$name}},
+\code{\link{Path$new}},
+\code{\link{Path$parent}},
+\code{\link{Path$show}},
+\code{\link{Path}},
+\code{\link{\%//\%}()}
 }
 \concept{Path}

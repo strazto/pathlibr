@@ -25,13 +25,19 @@ path <- Path$new("root/parent/name")
 child <- path \%//\% "child"
 print(glue::glue("path : {path$show}",
                  "child: {child$show}",
-                 .sep = "\\n"))
+                 .sep = "\n"))
 }
 \seealso{
-Other Path: \code{\link{Path$..}}, \code{\link{Path$.}},
-  \code{\link{Path$dir}}, \code{\link{Path$join}},
-  \code{\link{Path$name}}, \code{\link{Path$new}},
-  \code{\link{Path$parent}}, \code{\link{Path$show}},
-  \code{\link{Path}}
+Other Path: 
+\code{\link{Path$..}},
+\code{\link{Path$.}},
+\code{\link{Path$J}},
+\code{\link{Path$dir}},
+\code{\link{Path$join}},
+\code{\link{Path$name}},
+\code{\link{Path$new}},
+\code{\link{Path$parent}},
+\code{\link{Path$show}},
+\code{\link{Path}}
 }
 \concept{Path}
