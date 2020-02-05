@@ -3,9 +3,6 @@
 \name{Path$join}
 \alias{Path$join}
 \title{Join two path components}
-\usage{
-path$join("other/path")
-}
 \arguments{
 \item{other}{the path component to join on the RHS. Can be any object
 coercible to character, including \code{Path}}

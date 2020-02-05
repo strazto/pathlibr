@@ -3,9 +3,6 @@
 \name{Path$J}
 \alias{Path$J}
 \title{Join two path components}
-\usage{
-path$J("other/path")
-}
 \value{
 A new \code{Path} object resulting from the joined paths
 }
