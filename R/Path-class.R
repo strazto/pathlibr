@@ -11,6 +11,7 @@ Path <- R6::R6Class(
   public = list(
     initialize = function(path = NULL) private$abstract,
     join = function(other) private$abstact,
+    J    = function(other) self$join(other),
     climb = function(levels) private$abstract,
     print = function() print(self$show)
   ),
@@ -89,6 +90,10 @@ Path$set(
   overwrite = TRUE
 )
 
+# J =====
+#' @describeIn Path$join
+#' @name Path$J
+NULL
 # Active :::::::::::::::::::: ============
 
 # dir ======
