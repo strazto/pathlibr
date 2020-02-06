@@ -55,6 +55,7 @@ Path$set(
   "public", "initialize",
   function(path = NULL){
     if (is.null(path)) stop("Can't supply null path")
+    path %<>% as.character()
     private$path <- path
   },
   overwrite = TRUE
