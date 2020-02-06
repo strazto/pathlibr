@@ -31,3 +31,17 @@ test_that("Are able to make new file Path", {
   expect_setequal(names(files$.), c("f1.txt", "f2.txt"))
 
 })
+
+test_that("Creating paths behaves consistently", {
+  p1 <- Path$new("/path/to/a/file")
+
+  p2 <- p1 %>% Path$new()
+
+  expect_equal(p2$name, "file")
+  expect_equal(p1$name, "file")
+  expect_equal(p2$name, p1$name)
+
+  expect_equal(p2$parent$show, "/path/to/a")
+  expect_equal(p1$parent$show, "/path/to/a")
+  expect_equal(p2$parent$show, p1$parent$show)
+})

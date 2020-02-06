@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pathlibr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -69,7 +69,7 @@
       <h1>Getting Started</h1>
                         <h4 class="author">Matthew Strasiotto</h4>
             
-            <h4 class="date">2020-02-05</h4>
+            <h4 class="date">2020-02-06</h4>
       
       
       <div class="hidden name"><code>pathlibr.Rmd</code></div>
@@ -79,8 +79,8 @@
     
     
 <p>This document aims to provide an overview of the basic usage of the Path object. Before we start, we load the package.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(pathlibr)
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(glue)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(pathlibr)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(glue)</a></code></pre></div>
 <div id="motivation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#motivation" class="anchor"></a>Motivation</h1>
@@ -93,10 +93,10 @@
 <h2 class="hasAnchor">
 <a href="#making-a-path" class="anchor"></a>Making a Path</h2>
 <p>First lets initialize a new path object.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">root &lt;-<span class="st"> </span>Path<span class="op">$</span><span class="kw">new</span>(<span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">""</span>, <span class="dt">package =</span> <span class="st">"pathlibr"</span>, <span class="dt">mustWork =</span> <span class="ot">TRUE</span>))</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">root &lt;-<span class="st"> </span>Path<span class="op">$</span><span class="kw">new</span>(<span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">""</span>, <span class="dt">package =</span> <span class="st">"pathlibr"</span>, <span class="dt">mustWork =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
 <p>And lets view the new path</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">root<span class="op">$</span>show
-<span class="co">#&gt; [1] "/Library/Frameworks/R.framework/Versions/3.6/Resources/library/pathlibr/"</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">root<span class="op">$</span>show</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; [1] "/home/matty/work/repos/pathlibr/renv/library/R-3.6/x86_64-pc-linux-gnu/pathlibr/"</span></a></code></pre></div>
 <p>So far so good, we were able to initialize a Path object at our package install root.</p>
 <p>Now how do we use it?</p>
 </div>
@@ -107,50 +107,50 @@
 <p>Here, we use the <code>dir</code> binding, followed by <code>.</code></p>
 <p>Think of <code>.</code> as in, how file-systems represent the current directory.</p>
 <p>This is actually just a shortcut for <code>dir</code> or <code>ls</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eg &lt;-<span class="st"> </span>root<span class="op">$</span>dir<span class="op">$</span>example
-<span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/glue/man/glue.html">glue</a></span>(<span class="st">"using dir: {eg$show}"</span>))
-<span class="co">#&gt; using dir: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/pathlibr//example</span>
-
-eg &lt;-<span class="st"> </span>root<span class="op">$</span>.<span class="op">$</span>example
-
-<span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/glue/man/glue.html">glue</a></span>(<span class="st">"using '.': {eg$show}"</span>))
-<span class="co">#&gt; using '.': /Library/Frameworks/R.framework/Versions/3.6/Resources/library/pathlibr//example</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">eg &lt;-<span class="st"> </span>root<span class="op">$</span>dir<span class="op">$</span>example</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/glue/man/glue.html">glue</a></span>(<span class="st">"using dir: {eg$show}"</span>))</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; using dir: /home/matty/work/repos/pathlibr/renv/library/R-3.6/x86_64-pc-linux-gnu/pathlibr//example</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">eg &lt;-<span class="st"> </span>root<span class="op">$</span>.<span class="op">$</span>example</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/glue/man/glue.html">glue</a></span>(<span class="st">"using '.': {eg$show}"</span>))</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; using '.': /home/matty/work/repos/pathlibr/renv/library/R-3.6/x86_64-pc-linux-gnu/pathlibr//example</span></a></code></pre></div>
 <p>It’s important to note that <code>path$.</code> is actually returning a named list of files in the directory, and that though these files might look like strings when printed, they’re actually new <code>Path</code> objects.</p>
 <p>Because of this, we’re able to chain subsequent <code>$.</code> commands.</p>
 <p>Let’s see that in action.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">file &lt;-<span class="st"> </span>eg<span class="op">$</span>.<span class="op">$</span>path<span class="op">$</span>.<span class="op">$</span>to<span class="op">$</span>.<span class="op">$</span>file1.txt
-
-file
-<span class="co">#&gt; [1] "/Library/Frameworks/R.framework/Versions/3.6/Resources/library/pathlibr//example/path/to/file1.txt"</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">file &lt;-<span class="st"> </span>eg<span class="op">$</span>.<span class="op">$</span>path<span class="op">$</span>.<span class="op">$</span>to<span class="op">$</span>.<span class="op">$</span>file1.txt</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">file</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; [1] "/home/matty/work/repos/pathlibr/renv/library/R-3.6/x86_64-pc-linux-gnu/pathlibr//example/path/to/file1.txt"</span></a></code></pre></div>
 <p>Great, so how do we navigate to <code>file1.txt</code>’s sibling, <code>file2.txt</code>?</p>
 <p>We could use the <code>path$parent</code> binding to return the <code>Path</code> object corresponding to the directory <code>example/path/to/</code>,</p>
 <p>as you may have guessed, we can use a shortcut alias, <code>path$..</code> to navigate up.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">file<span class="op">$</span>parent
-<span class="co">#&gt; [1] "/Library/Frameworks/R.framework/Versions/3.6/Resources/library/pathlibr//example/path/to"</span>
-
-file<span class="op">$</span>..
-<span class="co">#&gt; [1] "/Library/Frameworks/R.framework/Versions/3.6/Resources/library/pathlibr//example/path/to"</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">file<span class="op">$</span>parent</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; [1] "/home/matty/work/repos/pathlibr/renv/library/R-3.6/x86_64-pc-linux-gnu/pathlibr//example/path/to"</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">file<span class="op">$</span>..</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; [1] "/home/matty/work/repos/pathlibr/renv/library/R-3.6/x86_64-pc-linux-gnu/pathlibr//example/path/to"</span></a></code></pre></div>
 <p>Now that we’re able to move upwards, we can access the sibling</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">file2 &lt;-<span class="st"> </span>file<span class="op">$</span>..<span class="op">$</span>.<span class="op">$</span>file2.txt
-
-file2<span class="op">$</span>show
-<span class="co">#&gt; [1] "/Library/Frameworks/R.framework/Versions/3.6/Resources/library/pathlibr//example/path/to/file2.txt"</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">file2 &lt;-<span class="st"> </span>file<span class="op">$</span>..<span class="op">$</span>.<span class="op">$</span>file2.txt</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">file2<span class="op">$</span>show</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; [1] "/home/matty/work/repos/pathlibr/renv/library/R-3.6/x86_64-pc-linux-gnu/pathlibr//example/path/to/file2.txt"</span></a></code></pre></div>
 <p>I wonder what’s inside these files? To find out, we should read them.</p>
 <p>It’s important to notes that we should use this <code>$show</code> binding to return the path as a string when giving it to IO functions.</p>
 <p>Inconvenient, I know (I’m going to work on that)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">directory &lt;-<span class="st"> </span>file<span class="op">$</span>..
-
-<span class="cf">for</span> (f <span class="cf">in</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"file1.txt"</span>, <span class="st">"file2.txt"</span>)){
-  <span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/glue/man/glue.html">glue</a></span>(<span class="st">"{f}:</span><span class="ch">\n</span><span class="st">"</span>))
-  
-  directory<span class="op">$</span>.[[f]]<span class="op">$</span>show <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>()
-  
-  <span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/glue/man/glue.html">glue</a></span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>))
-}
-<span class="co">#&gt; file1.txt:</span>
-<span class="co">#&gt; I am the first file!</span>
-<span class="co">#&gt; file2.txt:</span>
-<span class="co">#&gt; I am the second file!</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">directory &lt;-<span class="st"> </span>file<span class="op">$</span>..</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="cf">for</span> (f <span class="cf">in</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"file1.txt"</span>, <span class="st">"file2.txt"</span>)){</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">  <span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/glue/man/glue.html">glue</a></span>(<span class="st">"{f}:</span><span class="ch">\n</span><span class="st">"</span>))</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">  </a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">  directory<span class="op">$</span>.[[f]]<span class="op">$</span>show <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>()</a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">  </a>
+<a class="sourceLine" id="cb8-8" data-line-number="8">  <span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/glue/man/glue.html">glue</a></span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>))</a>
+<a class="sourceLine" id="cb8-9" data-line-number="9">}</a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; file1.txt:</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt; I am the first file!</span></a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; file2.txt:</span></a>
+<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt; I am the second file!</span></a></code></pre></div>
 </div>
 </div>
   </div>
