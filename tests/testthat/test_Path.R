@@ -41,7 +41,7 @@ test_that("Creating paths behaves consistently", {
   expect_equal(p1$name, "file")
   expect_equal(p2$name, p1$name)
 
-  expect_equal(p2$parent, "/path/to/a")
-  expect_equal(p1$parent, "/path/to/a")
-  expect_equal(p2$parent, p1$parent)
+  expect_equal(p2$parent$show, "/path/to/a")
+  expect_equal(p1$parent$show, "/path/to/a")
+  expect_equal(p2$parent$show, p1$parent$show)
 })
