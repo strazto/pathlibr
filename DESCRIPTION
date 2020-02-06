@@ -1,6 +1,6 @@
 Package: pathlibr
 Title: OO Path Manipulation in R
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: 
     person(given = "Matthew",
            family = "Strasiotto",
